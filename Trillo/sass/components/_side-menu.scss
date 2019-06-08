@@ -1,0 +1,97 @@
+.side-menu {
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
+
+    @include respond(tablet-portrait) {
+        display: flex;
+        margin: 0;
+    }
+
+    &__item::before {
+        content: "";
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 3px;
+        height: 100%;
+        background-color: var(--color-primary);
+        transform: scaleY(0);
+        transition: transform .2s,
+                    width .4s cubic-bezier(1,0,0,1) .2s,
+                    background-color .1s;
+    }
+
+    &__item {
+        position: relative;
+
+        @include respond(tablet-portrait) {
+            flex: 1;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+
+            @include respond(tablet-portrait) {
+                margin-bottom: 0;
+            }
+        }
+
+        &:hover::before,
+        &--active::before {
+            transform: scaleY(1);
+            width: 100%;
+        }
+
+        &:active::before {
+            background-color: var(--color-primary-light);
+        }
+    }
+
+    &__link:link,
+    &__link:visited {
+        color: var(--color-grey-light-1);
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 1.5rem 3rem;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+
+        @include respond(tablet-portrait) {
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        @include respond(phone) {
+            flex-direction: column;
+            padding: 1.5rem .5rem; 
+        }
+    }
+
+    &__icon {
+        height: 1.75rem;
+        width: 1.75rem;
+        margin-right: 2rem;
+        fill: currentColor;
+
+        @include respond(phone) {
+            margin-right: 0;
+            margin-bottom: .7rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}
+
+.legal {
+    color: var(--color-grey-light-4);
+    font-size: 1.2rem;
+    padding: 2.5rem;
+    text-align: center;
+
+    @include respond(tablet-portrait) {
+        display: none;
+    }
+}

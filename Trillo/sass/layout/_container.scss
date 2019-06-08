@@ -1,0 +1,11 @@
+.container {
+    max-width: 120rem;
+    margin: 8rem auto;
+    background-color: var(--color-grey-light-1);
+    box-shadow: var(--shadow-black);
+
+    @include respond(tablet-landscape) {
+        margin: 0;
+        max-width: 100%;
+    }
+}
